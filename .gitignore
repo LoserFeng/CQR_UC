@@ -161,3 +161,8 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 *.onnx
+.history
+.vscode
+qr_mode/
+weights/
+runtimes/
