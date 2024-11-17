@@ -1,0 +1,8 @@
+bistring
+qrcode
+opencv-contrib-python
+opencv-python
+pyqt5
+pyqt5-tools
+Pillow
+onnxruntime
