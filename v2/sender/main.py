@@ -435,9 +435,42 @@ def main():
 
 
 
+import argparse
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Command line argument parser for the script.")
+
+    parser.add_argument('--wait_time', type=int, default=50, help='Time to wait before exiting.')
+    parser.add_argument('--wait_key_time', type=int, default=10, help='Time to wait for a key press.')
+    parser.add_argument('--send_interval', type=int, default=400, help='Interval between sends.')
+    parser.add_argument('--test', action='store_true', help='Enable test mode.')
+    parser.add_argument('--linux_flag', action='store_true', help='Flag for Linux environment.')
+    parser.add_argument('--qrcode_version', type=int, default=4, help='Version of the QR code (1-40).')
+    parser.add_argument('--qrcode_type', type=int, default=3, help='Type of the QR code (e.g., 011 RG, 111 RGB, 1000 white).')
+    parser.add_argument('--error_correct_level', type=str, default='L', help='Error correction level for the QR code.')
+    parser.add_argument('--use_compress', type=int, default=1, help='Flag to use compression.')
+
+    return parser.parse_args()
+
+
+
+
+
+
 
 
 
 
 if __name__=="__main__":
+    args = parse_args()
+    #更新参数
+    WAIT_TIME=args.wait_time
+    WAIT_KEY_TIME=args.wait_key_time
+    SEND_INTERVAL=args.send_interval
+    TEST=args.test
+    LINUX_FLAG=args.linux_flag
+    QRCODE_VERSION=args.qrcode_version
+    QRCODE_TYPE=args.qrcode_type
+    ERROR_CORRECT_LEVEL=args.error_correct_level
+    USE_COMPRESS=args.use_compress
     main()

@@ -388,5 +388,20 @@ def main():
 
 
 
-if __name__ == '__main__':
+import argparse
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Command line argument parser for the script.")
+
+    parser.add_argument('--wait_time', type=int, default=100, help='Time to wait before exiting.')
+    parser.add_argument('--wait_key_time', type=int, default=10, help='Time to wait for a key press.')
+    parser.add_argument('--wait_to_end_time', type=int, default=1000, help='Time to wait before ending.')
+
+    return parser.parse_args()
+
+if __name__ == "__main__":
+    args = parse_args()
+    WAIT_TIME=args.wait_time
+    WAIT_KEY_TIME=args.wait_key_time
+    WAIT_TO_END_TIME=args.wait_to_end_time
     main()
