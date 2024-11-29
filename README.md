@@ -17,7 +17,7 @@ Compatible with both Windows and Linux platforms.
 bash
 复制代码
     ~~~
-    git clone https://github.com/your-repository.git  
+    git clone https://github.com/LoserFeng/CQR_UC.git  
 
     cd CQR_UC 
     ~~~
