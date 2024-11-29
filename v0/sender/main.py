@@ -33,13 +33,13 @@ TEST=False
 LINUX_FLAG:bool=False
 
 QRCODE_VERSION:int=4  #version 为1-40
-QRCODE_TYPE:int = 3  #011 RG     111  RGB  1000 white
+QRCODE_TYPE:int = 3  #exp: 011 RG   111  RGB  1000 white
 
 ERROR_CORRECT_LEVEL:str = 'L'
 USE_COMPRESS=1
 
 FILL_8k_data=False
-FILL_1k_data=True
+FILL_4k_data=True
 
 
 
@@ -55,6 +55,8 @@ FILL_1k_data=True
 # target_dir=os.path.join('CQRCode',task_list[task_id],select_list[select_id])
 
 
+import argparse
+
 
 
 class MainUI(Ui_MainWindow, QMainWindow):
@@ -66,8 +68,8 @@ class MainUI(Ui_MainWindow, QMainWindow):
 
         self.exitButton.clicked.connect(self.onClick_exitButton)   #退出按钮
         self.sendButton.clicked.connect(self.onClick_sendButton)   #传输信息的按钮
-        self.detector=Detector()
-        self.decoder=Decoder()
+        # self.detector=Detector()
+        # self.decoder=Decoder()
         
 
 
@@ -123,8 +125,8 @@ class MainUI(Ui_MainWindow, QMainWindow):
         # print("input text is :%s"%transmission_text)
         if(FILL_8k_data):
             transmission_text=generate_data()
-        elif(FILL_1k_data):
-            transmission_text=generate_data(1250)
+        elif(FILL_4k_data):
+            transmission_text=generate_data(4000)
 
 
         print('正在执行二维码生成程序')
@@ -341,7 +343,20 @@ def main():
 
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(description="Command line argument parser for the script.")
 
+    parser.add_argument('--wait_time', type=int, default=50, help='Time to wait before exiting.')
+    parser.add_argument('--wait_key_time', type=int, default=10, help='Time to wait for a key press.')
+    parser.add_argument('--send_interval', type=int, default=400, help='Interval between sends.')
+    parser.add_argument('--test', action='store_true', help='Enable test mode.')
+    parser.add_argument('--linux_flag', action='store_true', help='Flag for Linux environment.')
+    parser.add_argument('--qrcode_version', type=int, default=4, help='Version of the QR code (1-40).')
+    parser.add_argument('--qrcode_type', type=int, default=3, help='Type of the QR code (e.g., 011 RG, 111 RGB, 1000 white).')
+    parser.add_argument('--error_correct_level', type=str, default='L', help='Error correction level for the QR code.')
+    parser.add_argument('--use_compress', type=int, default=1, help='Flag to use compression.')
+
+    return parser.parse_args()
 
 
 
@@ -353,4 +368,15 @@ def main():
 
 
 if __name__=="__main__":
+    args = parse_args()
+    #更新参数
+    WAIT_TIME=args.wait_time
+    WAIT_KEY_TIME=args.wait_key_time
+    SEND_INTERVAL=args.send_interval
+    TEST=args.test
+    LINUX_FLAG=args.linux_flag
+    QRCODE_VERSION=args.qrcode_version
+    QRCODE_TYPE=args.qrcode_type
+    ERROR_CORRECT_LEVEL=args.error_correct_level
+    USE_COMPRESS=args.use_compress
     main()
