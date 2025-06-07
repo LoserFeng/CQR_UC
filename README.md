@@ -5,11 +5,11 @@ This is the repo for "CQR-UC: A Color QR Code-based Underwater Wireless Communic
 ### Introduction
 Underwater wireless communication plays a crucial role in ocean exploration, yet traditional solutions are often limited by high costs, significant power consumption, and bulky hardware. To address these challenges, we propose **CQR-UC**, a short-range underwater wireless communication system based on **Color QR (CQR) codes**. To enhance the readability of CQR codes distorted by underwater conditions, we introduce **CQR-GAN**, a generative model designed to restore and improve CQR code images. Furthermore, we develop a lightweight communication protocol named **CUP**, which ensures reliable, continuous, and bidirectional data transmission.
 
-![display-camera comm](E:\Work\Learning\Code\CQR_UC\assets\display-camera comm.png)
+![display-camera comm](./assets/display-camera comm.png)
 
 This project aims to implement data communication through color QR codes between two devices, specifically designed for underwater environments. Using a TCP-like continuous transmission method, it ensures reliable data transmission with an efficiency of up to 1000 bytes/s in air and 700 bytes/s in clean water.
 
-![image-20250607162604904](E:\Work\Learning\Code\CQR_UC\assets\image-20250607162604904.png)
+![image-20250607162604904](./assets/image-20250607162604904.png)
 
 ### Features
 
